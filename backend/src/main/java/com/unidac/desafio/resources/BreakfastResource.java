@@ -1,7 +1,9 @@
 package com.unidac.desafio.resources;
 
 import com.unidac.desafio.entities.Breakfast;
+import com.unidac.desafio.entities.FoodOption;
 import com.unidac.desafio.services.BreakfastService;
+import com.unidac.desafio.services.FoodOptionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,9 @@ public class BreakfastResource {
     @Autowired
     private BreakfastService breakfastService;
 
+    @Autowired
+    private FoodOptionService foodOptionService;
+
     @PostMapping
     public ResponseEntity<Breakfast> insert(@Valid @RequestBody Breakfast obj, BindingResult result) {
         obj = breakfastService.insert(obj);
@@ -34,6 +39,12 @@ public class BreakfastResource {
     @GetMapping
     public ResponseEntity<List<Breakfast>> getAll() {
         List<Breakfast> breakfastList = breakfastService.getAll();
+        return ResponseEntity.ok().body(breakfastList);
+    }
+
+    @GetMapping(path = "/food-options")
+    public ResponseEntity<List<FoodOption>> getAllFoodOptions() {
+        List<FoodOption> breakfastList = foodOptionService.getAll();
         return ResponseEntity.ok().body(breakfastList);
     }
 }
