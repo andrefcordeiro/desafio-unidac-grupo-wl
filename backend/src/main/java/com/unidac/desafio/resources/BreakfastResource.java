@@ -7,8 +7,6 @@ import com.unidac.desafio.services.FoodOptionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -16,7 +14,6 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@Validated
 @RequestMapping(value = "/breakfast")
 public class BreakfastResource {
 
@@ -27,7 +24,7 @@ public class BreakfastResource {
     private FoodOptionService foodOptionService;
 
     @PostMapping
-    public ResponseEntity<Breakfast> insert(@Valid @RequestBody Breakfast obj, BindingResult result) {
+    public ResponseEntity<Breakfast> insert(@Valid @RequestBody Breakfast obj) {
         obj = breakfastService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

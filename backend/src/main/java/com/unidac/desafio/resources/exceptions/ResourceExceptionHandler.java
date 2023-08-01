@@ -1,6 +1,7 @@
 package com.unidac.desafio.resources.exceptions;
 
 import java.time.Instant;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,14 @@ public class ResourceExceptionHandler {
         exception.getBindingResult().getFieldErrors().forEach(error -> {
             errorMap.put(error.getField(), error.getDefaultMessage());
         });
+        return errorMap;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(DateTimeParseException.class)
+    public Map<String, String> handleInvalidDateFormat(DateTimeParseException exception) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put(exception.getClass().toString(), exception.getMessage());
         return errorMap;
     }
 }

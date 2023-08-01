@@ -3,6 +3,7 @@ package com.unidac.desafio.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 import jakarta.persistence.Column;
@@ -11,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tb_employee")
@@ -21,11 +21,11 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //    @NotBlank(message = "name should not be empty")
+    @NotBlank(message = "name should not be empty")
     private String name;
 
     @Column(unique = true)
-//    @CPF(message = "invalid cpf format")
+    @CPF(message = "invalid cpf format")
     private String cpf;
 
     public Employee() {

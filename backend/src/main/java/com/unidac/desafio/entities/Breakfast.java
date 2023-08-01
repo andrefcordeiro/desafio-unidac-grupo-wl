@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_breakfast")
@@ -18,6 +19,7 @@ public class Breakfast implements Serializable {
 
     @Column(unique = true)
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "date should not be null")
     private LocalDate date;
 
     public Breakfast() {
