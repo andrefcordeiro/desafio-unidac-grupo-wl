@@ -13,6 +13,7 @@ import com.unidac.desafio.services.EmployeeService;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/employee")
 public class EmployeeResource {
 
