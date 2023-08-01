@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function registerBreakfast() {
+            event.preventDefault()
+
+            var breakfast = {}
+            breakfast['date'] = $('#register-breakfast-date').val()
+            var body = JSON.stringify(breakfast)
+            $.ajax({
+                url: "http://localhost:8080/breakfast",
+                contentType: "application/json",
+                data: body,
+                dataType: "json",
+                type: 'POST',
+                success: function (response) {
+                    $("#out-form").text('Café da manhã cadastrado')
+                    $("#out-form").css('color', 'green')
+                },
+                error:  function (response) {
+                    if(response.responseText.includes('Resource already exists. date:')){
+                        console.log(response)
+                        $("#out-form").text('Café da manhã já cadastrado para esta data')
+                        $("#out-form").css('color', 'red')
+                    }
+                    else {
+                        $("#out-form").text(response.responseText)
+                        $("#out-form").css('color', 'red')
+                        console.log(response)
+                    } 
+                },
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container-fluid text-center" style="width: 50vw;">
+        <p class="h1"> Cadastro de café da manhã </p>
+        
+        <form id="register-breakfast-form" onsubmit="registerBreakfast(event)">
+            <div class="form-group">
+                <label for="name">Data</label>
+                <input type="date" class="form-control" id="register-breakfast-date" placeholder="Informe o nome" required>
+            </div>
+            <button id="register-breakfast" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p id="out-form" class="help-block"> </p>
+    </div>
+</body>
+</html>
