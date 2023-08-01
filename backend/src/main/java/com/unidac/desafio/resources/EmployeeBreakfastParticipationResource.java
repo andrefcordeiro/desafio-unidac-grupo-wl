@@ -1,6 +1,7 @@
 package com.unidac.desafio.resources;
 
 import com.unidac.desafio.dto.EmployeeBreakfastParticipationDTO;
+import com.unidac.desafio.dto.EmployeeBreakfastParticipationUpdateStatusDTO;
 import com.unidac.desafio.services.EmployeeBreakfastParticipationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class EmployeeBreakfastParticipationResource {
     }
 
     @PostMapping(path = "/{employeeId}/foodOptions/{foodOptionId}/update-food-was-brought-status")
-    public ResponseEntity updateFoodWasBroughtStatus(@Valid @RequestBody EmployeeBreakfastParticipationDTO obj,
+    public ResponseEntity updateFoodWasBroughtStatus(@Valid @RequestBody EmployeeBreakfastParticipationUpdateStatusDTO obj,
                                                      @PathVariable("id") Long breakfastId,
                                                      @PathVariable("employeeId") Long employeeId,
                                                      @PathVariable("foodOptionId") Long foodOptionId) {

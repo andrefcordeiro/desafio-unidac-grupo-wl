@@ -1,6 +1,7 @@
 package com.unidac.desafio.services;
 
 import com.unidac.desafio.dto.EmployeeBreakfastParticipationDTO;
+import com.unidac.desafio.dto.EmployeeBreakfastParticipationUpdateStatusDTO;
 import com.unidac.desafio.entities.Employee;
 import com.unidac.desafio.entities.FoodOption;
 import com.unidac.desafio.projections.EmployeeBreakfastParticipationProjection;
@@ -48,7 +49,7 @@ public class EmployeeBreakfastParticipationService {
         return projections.stream().map(EmployeeBreakfastParticipationDTO::new).toList();
     }
 
-    public void updateFoodWasBroughtStatus(EmployeeBreakfastParticipationDTO employeeBreakfastParticipationDTO) {
+    public void updateFoodWasBroughtStatus(EmployeeBreakfastParticipationUpdateStatusDTO employeeBreakfastParticipationDTO) {
         employeeBreakfastParticipationRepository.
                 updateFoodWasBroughtStatus(employeeBreakfastParticipationDTO.getBreakfastId(), employeeBreakfastParticipationDTO.getEmployeeId(),
                         employeeBreakfastParticipationDTO.getFoodOptionId(), employeeBreakfastParticipationDTO.getFoodOptionWasBrought());
