@@ -65,8 +65,10 @@ public class TestConfig implements CommandLineRunner {
         }
 
         // employee breakfast participation
-//        employeeBreakfastParticipationRepository.insert(1L, 1L, 1L);
-//        employeeBreakfastParticipationRepository.insert(1L, 1L, 2L);
+        employeeBreakfastParticipationRepository.insert(1L, 1L, 1L);
+        employeeBreakfastParticipationRepository.insert(1L, 1L, 2L);
+
+        employeeBreakfastParticipationRepository.insert(1L, 2L, 3L);
 
 
         System.out.println("Finalizado!!!");

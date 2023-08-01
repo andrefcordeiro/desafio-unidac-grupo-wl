@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @Validated
@@ -30,5 +31,12 @@ public class EmployeeBreakfastParticipationResource {
                 .buildAndExpand(obj.getBreakfastId(), obj.getEmployeeCpf())
                 .toUri();
         return ResponseEntity.created(uri).body(obj);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeBreakfastParticipationDTO>> getAll(@PathVariable("id") Long breakfastId) {
+        List<EmployeeBreakfastParticipationDTO> breakfastParticipations =
+                employeeBreakfastParticipationService.getAllByBreakfastId(breakfastId);
+        return ResponseEntity.ok().body(breakfastParticipations);
     }
 }

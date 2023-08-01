@@ -1,23 +1,52 @@
 package com.unidac.desafio.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.unidac.desafio.entities.FoodOption;
+import com.unidac.desafio.projections.EmployeeBreakfastParticipationProjection;
+
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 public class EmployeeBreakfastParticipationDTO implements Serializable {
+    private Long employeeId;
 
     private String employeeCpf;
 
+    private String employeeName;
+
     private Long breakfastId;
 
-    Set<Long> foodOptions;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate breakfastDate;
+
+    private Set<FoodOption> foodOptions = new HashSet<>();
 
     public EmployeeBreakfastParticipationDTO() {
     }
 
-    public EmployeeBreakfastParticipationDTO(String employeeCpf, Long breakfastId, Set<Long> foodOptions) {
-        this.employeeCpf = employeeCpf;
-        this.breakfastId = breakfastId;
-        this.foodOptions = foodOptions;
+    public EmployeeBreakfastParticipationDTO(EmployeeBreakfastParticipationProjection projection) {
+        this.breakfastId = projection.getBreakfastId();
+        this.breakfastDate = projection.getBreakfastDate();
+        this.employeeId = projection.getEmployeeId();
+        this.employeeCpf = projection.getEmployeeCpf();
+        this.employeeName = projection.getEmployeeName();
+
+        String[] foodOptionsId = projection.getFoodOptions().split(",");
+        String[] foodOptionsNames = projection.getFoodOptionsNames().split(",");
+
+        for (int i = 0; i < foodOptionsNames.length; i++) {
+            this.foodOptions.add(new FoodOption(Long.parseLong(foodOptionsId[i]), foodOptionsNames[i]));
+        }
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getEmployeeCpf() {
@@ -28,6 +57,14 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
         this.employeeCpf = employeeCpf;
     }
 
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
     public Long getBreakfastId() {
         return breakfastId;
     }
@@ -36,11 +73,19 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
         this.breakfastId = breakfastId;
     }
 
-    public Set<Long> getFoodOptions() {
+    public LocalDate getBreakfastDate() {
+        return breakfastDate;
+    }
+
+    public void setBreakfastDate(LocalDate breakfastDate) {
+        this.breakfastDate = breakfastDate;
+    }
+
+    public Set<FoodOption> getFoodOptions() {
         return foodOptions;
     }
 
-    public void addFoodOption(Long foodOptionId) {
-        this.foodOptions.add(foodOptionId);
+    public void addFoodOption(FoodOption foodOption) {
+        this.foodOptions.add(foodOption);
     }
 }
