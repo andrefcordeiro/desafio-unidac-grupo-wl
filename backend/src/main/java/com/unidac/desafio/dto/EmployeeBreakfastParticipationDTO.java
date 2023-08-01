@@ -3,6 +3,8 @@ package com.unidac.desafio.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.unidac.desafio.entities.FoodOption;
 import com.unidac.desafio.projections.EmployeeBreakfastParticipationProjection;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,8 +12,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EmployeeBreakfastParticipationDTO implements Serializable {
+
     private Long employeeId;
 
+    @NotBlank(message = "employeeCpf should not be empty")
     private String employeeCpf;
 
     private String employeeName;
@@ -23,9 +27,8 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
 
     private Set<FoodOption> foodOptions = new HashSet<>();
 
-    private Long foodOptionId;
-
-    private Boolean foodOptionWasBrought;
+    @NotEmpty(message = "foodOptionsIds should not be empty")
+    private Set<Long> foodOptionsIds = new HashSet<>();
 
     public EmployeeBreakfastParticipationDTO() {
     }
@@ -93,19 +96,11 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
         this.foodOptions.add(foodOption);
     }
 
-    public Long getFoodOptionId() {
-        return foodOptionId;
+    public Set<Long> getFoodOptionsIds() {
+        return foodOptionsIds;
     }
 
-    public void setFoodOptionId(Long foodOptionId) {
-        this.foodOptionId = foodOptionId;
-    }
-
-    public Boolean getFoodOptionWasBrought() {
-        return foodOptionWasBrought;
-    }
-
-    public void setFoodOptionWasBrought(Boolean foodOptionWasBrought) {
-        this.foodOptionWasBrought = foodOptionWasBrought;
+    public void setFoodOptionsIds(Set<Long> foodOptionsIds) {
+        this.foodOptionsIds = foodOptionsIds;
     }
 }

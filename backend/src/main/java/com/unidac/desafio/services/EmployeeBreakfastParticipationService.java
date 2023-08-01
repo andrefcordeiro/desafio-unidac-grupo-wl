@@ -26,19 +26,19 @@ public class EmployeeBreakfastParticipationService {
         Employee employee = employeeRepository.findByCPF(employeeBreakfastParticipationDTO.getEmployeeCpf());
         Long breakfastId = employeeBreakfastParticipationDTO.getBreakfastId();
 
-        for (FoodOption foodOption : employeeBreakfastParticipationDTO.getFoodOptions()) {
+        for (Long foodOptionId : employeeBreakfastParticipationDTO.getFoodOptionsIds()) {
 
             // verificando se a opção já foi escolhida
             Long employeeId = employeeBreakfastParticipationRepository.
-                    foodOptionWasSelected(breakfastId, foodOption.getId());
+                    foodOptionWasSelected(breakfastId, foodOptionId);
 
             if (employeeId != null) {
-                throw new InvalidBreakfastParticipationException("FoodOption with id " + foodOption.getId() +
+                throw new InvalidBreakfastParticipationException("FoodOption with id " + foodOptionId +
                         " has already been selected by employee with id: " + employeeId +
                         " for breakfast with id: " + breakfastId + ".");
             }
 
-            employeeBreakfastParticipationRepository.insert(breakfastId, employee.getId(), foodOption.getId());
+            employeeBreakfastParticipationRepository.insert(breakfastId, employee.getId(), foodOptionId);
         }
         return employeeBreakfastParticipationDTO;
     }

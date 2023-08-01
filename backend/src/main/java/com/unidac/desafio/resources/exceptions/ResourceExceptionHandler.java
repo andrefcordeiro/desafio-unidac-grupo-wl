@@ -1,13 +1,17 @@
 package com.unidac.desafio.resources.exceptions;
 
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.unidac.desafio.services.exceptions.InvalidBreakfastParticipationException;
 import com.unidac.desafio.services.exceptions.ResourceAlreadyExistsException;
 import com.unidac.desafio.services.exceptions.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.http.HttpStatus;
 
@@ -36,5 +40,15 @@ public class ResourceExceptionHandler {
                         Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(status).body(err);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException exception) {
+        Map<String, String> errorMap = new HashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach(error -> {
+            errorMap.put(error.getField(), error.getDefaultMessage());
+        });
+        return errorMap;
     }
 }
