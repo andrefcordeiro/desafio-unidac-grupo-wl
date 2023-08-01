@@ -35,4 +35,11 @@ public interface EmployeeBreakfastParticipationRepository extends JpaRepository<
             GROUP BY ebp.breakfast_id, ebp.employee_id, e.name;
             """, nativeQuery = true)
     List<EmployeeBreakfastParticipationProjection> getAllByBreakfastId(@Param("breakfastId") Long breakfastId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE tb_employee_breakfast_participation SET food_option_was_brought = :foodOptionWasBrought " +
+            "WHERE breakfast_id = :breakfastId AND employee_id = :employeeId AND food_option_id = :foodOptionId", nativeQuery = true)
+    int updateFoodWasBroughtStatus(@Param("breakfastId") Long breakfastId, @Param("employeeId") Long employeeId,
+                                  @Param("foodOptionId") Long foodOptionId, @Param("foodOptionWasBrought") Boolean foodOptionWasBrought);
 }

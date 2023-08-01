@@ -47,4 +47,10 @@ public class EmployeeBreakfastParticipationService {
                 employeeBreakfastParticipationRepository.getAllByBreakfastId(breakfastId);
         return projections.stream().map(EmployeeBreakfastParticipationDTO::new).toList();
     }
+
+    public void updateFoodWasBroughtStatus(EmployeeBreakfastParticipationDTO employeeBreakfastParticipationDTO) {
+        employeeBreakfastParticipationRepository.
+                updateFoodWasBroughtStatus(employeeBreakfastParticipationDTO.getBreakfastId(), employeeBreakfastParticipationDTO.getEmployeeId(),
+                        employeeBreakfastParticipationDTO.getFoodOptionId(), employeeBreakfastParticipationDTO.getFoodOptionWasBrought());
+    }
 }

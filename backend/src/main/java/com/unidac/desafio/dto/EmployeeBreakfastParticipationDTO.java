@@ -23,6 +23,10 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
 
     private Set<FoodOption> foodOptions = new HashSet<>();
 
+    private Long foodOptionId;
+
+    private Boolean foodOptionWasBrought;
+
     public EmployeeBreakfastParticipationDTO() {
     }
 
@@ -87,5 +91,21 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
 
     public void addFoodOption(FoodOption foodOption) {
         this.foodOptions.add(foodOption);
+    }
+
+    public Long getFoodOptionId() {
+        return foodOptionId;
+    }
+
+    public void setFoodOptionId(Long foodOptionId) {
+        this.foodOptionId = foodOptionId;
+    }
+
+    public Boolean getFoodOptionWasBrought() {
+        return foodOptionWasBrought;
+    }
+
+    public void setFoodOptionWasBrought(Boolean foodOptionWasBrought) {
+        this.foodOptionWasBrought = foodOptionWasBrought;
     }
 }

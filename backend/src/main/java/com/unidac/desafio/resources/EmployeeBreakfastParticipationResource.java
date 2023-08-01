@@ -39,4 +39,16 @@ public class EmployeeBreakfastParticipationResource {
                 employeeBreakfastParticipationService.getAllByBreakfastId(breakfastId);
         return ResponseEntity.ok().body(breakfastParticipations);
     }
+
+    @PostMapping(path = "/{employeeId}/foodOptions/{foodOptionId}/update-food-was-brought-status")
+    public ResponseEntity updateFoodWasBroughtStatus(@Valid @RequestBody EmployeeBreakfastParticipationDTO obj,
+                                                     @PathVariable("id") Long breakfastId,
+                                                     @PathVariable("employeeId") Long employeeId,
+                                                     @PathVariable("foodOptionId") Long foodOptionId) {
+        obj.setBreakfastId(breakfastId);
+        obj.setEmployeeId(employeeId);
+        obj.setFoodOptionId(foodOptionId);
+        employeeBreakfastParticipationService.updateFoodWasBroughtStatus(obj);
+        return ResponseEntity.noContent().build();
+    }
 }
