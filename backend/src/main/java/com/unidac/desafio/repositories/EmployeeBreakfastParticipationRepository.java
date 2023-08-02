@@ -32,7 +32,7 @@ public interface EmployeeBreakfastParticipationRepository extends JpaRepository<
             JOIN tb_breakfast AS b ON ebp.breakfast_id = b.id
             JOIN tb_employee AS e ON ebp.employee_id = e.id
             JOIN tb_food_option AS fo ON ebp.food_option_id = fo.id
-            WHERE ebp.breakfast_id = 1
+            WHERE ebp.breakfast_id = :breakfastId
             GROUP BY ebp.breakfast_id, ebp.employee_id, e.name;
             """, nativeQuery = true)
     List<EmployeeBreakfastParticipationProjection> getAllByBreakfastId(@Param("breakfastId") Long breakfastId);
