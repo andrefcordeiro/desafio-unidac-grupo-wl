@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ 
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="/src/js/register-breakfast-participation.js"></script>
+    
+</head>
+<body onload="onPageLoadFunction()">
+    <div class="container-fluid text-center" style="width: 50vw;">
+        <p class="h1"> Cadastro de participação em um café da manhã </p>
+        
+        <form id="register-breakfast-form" onsubmit="registerBreakfastParticipation(event)">
+            <div class="form-group">
+                <label for="name">Data cadastradas</label>
+                <select id="breakfast-dates" class="form-select" required>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cpf">Cpf do colaborador</label>
+                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF do colaborador" required>
+            </div>
+
+            <div class="form-group">
+                <label for="food-options">Opções de comidas</label>
+                <select id="options-selected" class="form-select" required>
+                </select>
+                <button id="add-button" type="button" onclick="addFoodOption()"> Adicionar opção </button>
+                <button id="add-button" type="button" onclick="removeFoodOption()"> Remover última opção </button>
+
+                <ul id="food-options-list"></ul>
+            </div>
+
+            <button id="register-breakfast" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p id="out-form" class="help-block"> </p>
+    </div>
+</body>
+</html>
