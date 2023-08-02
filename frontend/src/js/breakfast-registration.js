@@ -1,9 +1,23 @@
 function registerBreakfast(event) {
     event.preventDefault()
 
-    var breakfast = {}
-    breakfast['date'] = $('#register-breakfast-date').val()
-    var body = JSON.stringify(breakfast)
+    const date = $('#register-breakfast-date').val()
+    let today = new Date()
+    today.setHours(0, 0, 0, 0);
+    
+    let givenDate = new Date(date)
+    givenDate.setHours(0, 0, 0, 0);
+
+    if (givenDate <= today) {
+        $("#out-form").text('A data deve ser maior do que a atual.')
+        $("#out-form").css('color', 'yellow')
+        return
+    }
+
+    let breakfast = {}
+    breakfast['date'] = date
+    let body = JSON.stringify(breakfast)
+
     $.ajax({
         url: "http://localhost:8080/breakfast",
         contentType: "application/json",
