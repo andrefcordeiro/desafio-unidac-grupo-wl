@@ -19,13 +19,15 @@
     
 </head>
 <body onload="onPageLoadFunction()" class="bg-primary">
+    <a class="btn btn-light m-2 text-primary font-weight-bold" href="../../index.html"> Página inicial </a>
+
     <div class="container d-flex flex-column align-items-center" style="height: 100vh; width: 50vw;">
         <p  class="h1 mb-5 text-light text-center m-5"> Cadastro de participação em um café da manhã </p>
         
         <form id="register-breakfast-form" class="d-flex flex-column justify-content-center align-items-start"
             onsubmit="registerBreakfastParticipation(event)" style="width: 70%; ">
             <div class="form-group d-flex flex-column">
-                <label class="text-light font-weight-bold" for="date">Data cadastradas</label>
+                <label class="text-light font-weight-bold" for="date">Datas cadastradas</label>
                 <select id="breakfast-dates" class="form-select" required>
                 </select>
             </div>

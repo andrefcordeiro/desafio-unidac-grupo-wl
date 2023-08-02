@@ -17,25 +17,25 @@
     
     <script src="/src/js/employee-registration.js"></script>
 </head>
-<body>
-    <div class="bg-primary" style="height: 100vh; width: 100vw;">
-        <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh; width: 70vw;">
-            <p class="h1 mb-5 text-light"> Cadastro de colaboradores </p>
-            
-            <form id="register-employee-form" class="d-flex flex-column justify-content-center align-items-center" 
-                onsubmit="registerEmployee(event)" style="width: 50%;">
-                <div class="form-group" style="width: 100%;">
-                    <label class="text-light font-weight-bold" for="name">Nome</label>
-                    <input type="text" class="form-control" id="register-employee-name" placeholder="Informe o nome" required>
-                </div>
-                <div class="form-group" style="width: 100%;">
-                    <label class="text-light font-weight-bold" for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF" required>
-                </div>
-                <button id="register-employee" type="submit" class="btn btn-light mt-3 text-primary font-weight-bold">Cadastrar</button>
-            </form>
-            <p id="out-form" class="help-block mt-4"> </p>
-        </div>
+<body class="bg-primary">
+    <a class="btn btn-light m-2 text-primary font-weight-bold" href="../../index.html"> Página inicial </a>
+
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh; width: 70vw;">
+        <p class="h1 mb-5 text-light"> Cadastro de colaboradores </p>
+        
+        <form id="register-employee-form" class="d-flex flex-column justify-content-center align-items-center" 
+            onsubmit="registerEmployee(event)" style="width: 50%;">
+            <div class="form-group" style="width: 100%;">
+                <label class="text-light font-weight-bold" for="name">Nome</label>
+                <input type="text" class="form-control" id="register-employee-name" placeholder="Informe o nome" required>
+            </div>
+            <div class="form-group" style="width: 100%;">
+                <label class="text-light font-weight-bold" for="cpf">CPF</label>
+                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF" required>
+            </div>
+            <button id="register-employee" type="submit" class="btn btn-light mt-3 text-primary font-weight-bold">Cadastrar</button>
+        </form>
+        <p id="out-form" class="help-block mt-4"> </p>
     </div>
 </body>
 </html>

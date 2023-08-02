@@ -18,22 +18,22 @@
     <script src="/src/js/breakfast-registration.js"></script>
 
 </head>
-<body>
-    <div class="bg-primary" style="height: 100vh; width: 100vw;">
-        <div class="container d-flex flex-column justify-content-center align-items-center" 
-            style="height: 100vh; width: 70vw;">
-            <p class="h1 mb-5 text-light"> Cadastro de café da manhã </p>
-            
-            <form id="register-breakfast-form" class="d-flex flex-column justify-content-center align-items-center"
-                onsubmit="registerBreakfast(event)" style="width: 50%;">
-                <div class="form-group" style="width: 100%;">
-                    <label class="text-light font-weight-bold" for="name">Data</label>
-                    <input type="date" class="form-control" id="register-breakfast-date" placeholder="Informe o nome" required>
-                </div>
-                <button id="register-breakfast" type="submit" class="btn btn-light mt-5 text-primary font-weight-bold">Registrar</button>
-            </form>
-            <p id="out-form" class="help-block mt-4"> </p>
-        </div>
+<body class="bg-primary">
+    <a class="btn btn-light m-2 text-primary font-weight-bold" href="../../index.html"> Página inicial </a>
+
+    <div class="container d-flex flex-column justify-content-center align-items-center" 
+        style="height: 100vh; width: 70vw;">
+        <p class="h1 mb-5 text-light"> Cadastro de café da manhã </p>
+        
+        <form id="register-breakfast-form" class="d-flex flex-column justify-content-center align-items-center"
+            onsubmit="registerBreakfast(event)" style="width: 50%;">
+            <div class="form-group" style="width: 100%;">
+                <label class="text-light font-weight-bold" for="name">Data</label>
+                <input type="date" class="form-control" id="register-breakfast-date" placeholder="Informe o nome" required>
+            </div>
+            <button id="register-breakfast" type="submit" class="btn btn-light mt-5 text-primary font-weight-bold">Registrar</button>
+        </form>
+        <p id="out-form" class="help-block mt-4"> </p>
     </div>
 </body>
 </html>
