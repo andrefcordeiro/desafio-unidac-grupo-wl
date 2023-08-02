@@ -5,6 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.unidac.desafio.services.exceptions.InvalidBreakfastDateException;
 import com.unidac.desafio.services.exceptions.InvalidBreakfastParticipationException;
 import com.unidac.desafio.services.exceptions.ResourceAlreadyExistsException;
 import com.unidac.desafio.services.exceptions.StandardError;
@@ -59,5 +60,17 @@ public class ResourceExceptionHandler {
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put(exception.getClass().toString(), exception.getMessage());
         return errorMap;
+    }
+
+    @ExceptionHandler(InvalidBreakfastDateException.class)
+    public ResponseEntity<StandardError> handleInvalidBreakfastDate(
+            InvalidBreakfastDateException e, HttpServletRequest request) {
+        String error = "Invalid breakfast date";
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError err =
+                new StandardError(
+                        Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
     }
 }
