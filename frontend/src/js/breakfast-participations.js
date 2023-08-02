@@ -84,11 +84,11 @@ function updateFoodWasBroughtStatus(employeeId, foodOptionId, foodOptionWasBroug
         type: 'POST',
         success: function (response) {
             $("#out-form").text('Informações cadastradas')
-            $("#out-form").css('color', 'green')
+            $("#out-form").css('color', 'white')
         },
         error:  function (response) {
             $("#out-form").text('Erro ao cadastrar informações')
-            $("#out-form").css('color', 'red')
+            $("#out-form").css('color', 'yellow')
         },
     })
 }
