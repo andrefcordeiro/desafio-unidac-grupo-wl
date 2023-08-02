@@ -14,38 +14,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script>
-        function registerBreakfast() {
-            event.preventDefault()
-
-            var breakfast = {}
-            breakfast['date'] = $('#register-breakfast-date').val()
-            var body = JSON.stringify(breakfast)
-            $.ajax({
-                url: "http://localhost:8080/breakfast",
-                contentType: "application/json",
-                data: body,
-                dataType: "json",
-                type: 'POST',
-                success: function (response) {
-                    $("#out-form").text('Café da manhã cadastrado')
-                    $("#out-form").css('color', 'green')
-                },
-                error:  function (response) {
-                    if(response.responseText.includes('Resource already exists. date:')){
-                        console.log(response)
-                        $("#out-form").text('Café da manhã já cadastrado para esta data')
-                        $("#out-form").css('color', 'red')
-                    }
-                    else {
-                        $("#out-form").text(response.responseText)
-                        $("#out-form").css('color', 'red')
-                        console.log(response)
-                    } 
-                },
-            });
-        }
-    </script>
+    <script src="/src/js/breakfast-registration.js"></script>
 
 </head>
 <body>
