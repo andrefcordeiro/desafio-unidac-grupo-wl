@@ -25,7 +25,7 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate breakfastDate;
 
-    private Set<FoodOption> foodOptions = new HashSet<>();
+    private Set<FoodOptionDTO> foodOptions = new HashSet<>();
 
     @NotEmpty(message = "foodOptionsIds should not be empty")
     private Set<Long> foodOptionsIds = new HashSet<>();
@@ -42,9 +42,11 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
 
         String[] foodOptionsId = projection.getFoodOptions().split(",");
         String[] foodOptionsNames = projection.getFoodOptionsNames().split(",");
+        String[] foodOptionsWereBroughtStatuses = projection.getFoodOptionsWereBroughtStatuses().split(",");
 
         for (int i = 0; i < foodOptionsNames.length; i++) {
-            this.foodOptions.add(new FoodOption(Long.parseLong(foodOptionsId[i]), foodOptionsNames[i]));
+            this.foodOptions.add(new FoodOptionDTO(Long.parseLong(foodOptionsId[i]), foodOptionsNames[i],
+                    Boolean.valueOf(foodOptionsWereBroughtStatuses[i])));
         }
     }
 
@@ -88,11 +90,11 @@ public class EmployeeBreakfastParticipationDTO implements Serializable {
         this.breakfastDate = breakfastDate;
     }
 
-    public Set<FoodOption> getFoodOptions() {
+    public Set<FoodOptionDTO> getFoodOptions() {
         return foodOptions;
     }
 
-    public void addFoodOption(FoodOption foodOption) {
+    public void addFoodOption(FoodOptionDTO foodOption) {
         this.foodOptions.add(foodOption);
     }
 

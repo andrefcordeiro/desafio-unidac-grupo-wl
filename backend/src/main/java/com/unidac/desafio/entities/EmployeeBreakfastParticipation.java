@@ -14,6 +14,7 @@ public class EmployeeBreakfastParticipation implements Serializable {
     @EmbeddedId
     private EmployeeBreakfastParticipationPK id = new EmployeeBreakfastParticipationPK();
 
+    @Column(columnDefinition = "boolean default false")
     private Boolean foodOptionWasBrought;
 
     public EmployeeBreakfastParticipation() {

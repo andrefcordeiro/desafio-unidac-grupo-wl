@@ -19,4 +19,6 @@ public interface EmployeeBreakfastParticipationProjection {
     String getFoodOptions();
 
     String getFoodOptionsNames();
+
+    String getFoodOptionsWereBroughtStatuses();
 }

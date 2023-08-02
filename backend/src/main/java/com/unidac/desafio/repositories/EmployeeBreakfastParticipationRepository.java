@@ -26,7 +26,8 @@ public interface EmployeeBreakfastParticipationRepository extends JpaRepository<
     @Query(value = """
             SELECT ebp.breakfast_id AS breakfastId, b.date AS breakfastDate, ebp.employee_id AS employeeId, 
                 e.name AS employeeName, e.cpf AS employeeCpf,
-                listagg(TO_CHAR(fo.id)) AS foodOptions, listagg(fo.food_name) AS foodOptionsNames
+                listagg(TO_CHAR(fo.id)) AS foodOptions, listagg(fo.food_name) AS foodOptionsNames, 
+                listagg(ebp.food_option_was_brought) AS foodOptionsWereBroughtStatuses
             FROM tb_employee_breakfast_participation AS ebp
             JOIN tb_breakfast AS b ON ebp.breakfast_id = b.id
             JOIN tb_employee AS e ON ebp.employee_id = e.id
