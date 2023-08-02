@@ -35,11 +35,17 @@ function onPageLoadFunction(event) {
 
                     // opções de comida selecionadas
                     e.foodOptions.forEach(foodOption => {
+                        if (foodOption.foodOptionWasBrought === true)
+                            checked_field = "checked"
+                        else
+                            checked_field = ""
+                        
+                        console.log(checked_field)
                         $("#food-options-" + e.employeeId).prepend(
                             `
-                            <input class="form-check-input" type="checkbox" value="" id="food-option-${foodOption.id}">
+                            <input class="form-check-input" type="checkbox" value="" id="food-option-${foodOption.id}" ${checked_field}>
                             <label class="form-check-label" for="food-option-checkbox">
-                                ${foodOption.foodName}
+                            ${foodOption.foodName}
                             </label>
                             `
                         )
