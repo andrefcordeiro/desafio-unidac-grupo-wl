@@ -53,7 +53,12 @@ function updateSelectedOptionsList() {
     selectedOptionsList.empty();
 
     selectedOptions.forEach(option => {
-        selectedOptionsList.append(`<li>${option.foodName}</li>`);
+        selectedOptionsList.append(
+        `
+            <li class="list-group-item text-primary font-weight-bold mt-2">
+                ${option.foodName}
+            </li>
+        `);
     });
 }
 
@@ -63,7 +68,7 @@ function registerBreakfastParticipation(event) {
 
     if(selectedOptions.length == 0) {
         $("#out-form").text('Selecione uma opção de alimento')
-        $("#out-form").css('color', 'red')
+        $("#out-form").css('color', 'yellow')
         return
     }
 
@@ -89,14 +94,14 @@ function registerBreakfastParticipation(event) {
         type: 'POST',
         success: function (response) {
             $("#out-form").text('Participação cadastrada')
-            $("#out-form").css('color', 'green')
+            $("#out-form").css('color', 'white')
         }, 
         error: function (response) {
             let foodOptionAlreadySelectedId = response.responseJSON.message.split("id")[1].split(" ")[1]
             let foodOptionAlreadySelectedName = foodOptions[foodOptionAlreadySelectedId - 1].foodName
             
             $("#out-form").text('Opção "' +  foodOptionAlreadySelectedName + '" já foi selecionada. Escolha outro alimento.')
-            $("#out-form").css('color', 'red')          
+            $("#out-form").css('color', 'yellow')          
         },
     })
 }
