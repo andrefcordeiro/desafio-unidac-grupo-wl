@@ -3,7 +3,7 @@ let foodOptions = []
 function onPageLoadFunction() {
     // recebe todas as datas de café da manhã existentes
     $.ajax({
-        url: "http://localhost:8080/breakfast",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast",
         dataType: "json",
         type: 'GET',
         success: function (response) {
@@ -18,7 +18,7 @@ function onPageLoadFunction() {
 
     // recebe todas as opções de comida
     $.ajax({
-        url: "http://localhost:8080/breakfast/food-options",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast/food-options",
         dataType: "json",
         type: 'GET',
         success: function (response) {
@@ -87,7 +87,7 @@ function registerBreakfastParticipation(event) {
     var body = JSON.stringify(breakfastParticipation)
 
     $.ajax({
-        url: "http://localhost:8080/breakfast/" + breakfastId + "/participations",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast/" + breakfastId + "/participations",
         contentType: "application/json",
         data: body,
         dataType: "json",

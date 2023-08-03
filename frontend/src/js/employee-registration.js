@@ -6,7 +6,7 @@ function registerEmployee(event) {
 
     var body = JSON.stringify(employee)
     $.ajax({
-        url: "http://localhost:8080/employee",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/employee",
         contentType: "application/json",
         data: body,
         dataType: "json",

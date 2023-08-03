@@ -7,7 +7,7 @@ function onPageLoadFunction(event) {
     console.log(document.location.href)
 
     $.ajax({
-        url: "http://localhost:8080/breakfast/" + breakfastId + "/participations",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast/" + breakfastId + "/participations",
         dataType: "json",
         type: 'GET',
         success: function (response) {
@@ -76,7 +76,7 @@ function updateFoodWasBroughtStatus(employeeId, foodOptionId, foodOptionWasBroug
     let body = JSON.stringify({foodOptionWasBrought: foodOptionWasBrought})
 
     $.ajax({
-        url: "http://localhost:8080/breakfast/" + breakfastId + "/participations/" 
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast/" + breakfastId + "/participations/" 
                 + employeeId + "/foodOptions/" + foodOptionId + "/update-food-was-brought-status",
         contentType: "application/json",
         data: body,

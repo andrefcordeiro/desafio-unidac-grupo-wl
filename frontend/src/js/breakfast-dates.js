@@ -2,7 +2,7 @@ function onPageLoadFunction(event) {
     event.preventDefault()
 
     $.ajax({
-        url: "http://localhost:8080/breakfast",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast",
         dataType: "json",
         type: 'GET',
         success: function (response) {
