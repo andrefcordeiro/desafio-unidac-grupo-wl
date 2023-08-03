@@ -20,7 +20,7 @@ public class BreakfastService {
 
     public Breakfast insert(Breakfast breakfast) {
         LocalDate today = LocalDate.now();
-        if (today.isAfter(breakfast.getDate())) {
+        if (!breakfast.getDate().isAfter(today)) {
             throw new InvalidBreakfastDateException("Breakfast date should be greater than today");
         }
 

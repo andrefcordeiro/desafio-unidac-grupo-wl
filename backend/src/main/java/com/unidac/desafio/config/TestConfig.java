@@ -33,18 +33,18 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // employee
-        Employee e = new Employee(null, "Fulano de Tal", "124.786.171-09");
-        employeeRepository.insert(e.getName(), e.getCpf());
-
-        e = new Employee(null, "Joao", "732.442.160-13");
-        employeeRepository.insert(e.getName(), e.getCpf());
-
-        // braekfast
-        Breakfast bf1 = new Breakfast(null, LocalDate.of(2023, 8, 1));
-        Breakfast bf2 = new Breakfast(null, LocalDate.of(2023, 10, 13));
-        breakfastRepository.saveAll(List.of(bf1, bf2));
-
+//        // employee
+//        Employee e = new Employee(null, "Fulano de Tal", "124.786.171-09");
+//        employeeRepository.insert(e.getName(), e.getCpf());
+//
+//        e = new Employee(null, "Joao", "732.442.160-13");
+//        employeeRepository.insert(e.getName(), e.getCpf());
+//
+//        // braekfast
+//        Breakfast bf1 = new Breakfast(null, LocalDate.of(2023, 8, 1));
+//        Breakfast bf2 = new Breakfast(null, LocalDate.of(2023, 10, 13));
+//        breakfastRepository.saveAll(List.of(bf1, bf2));
+//
         // food options
         String[] foodOptions = {
                 "Pão de forma", "Pão francês", "Pão integral", "Croissant",
@@ -63,13 +63,13 @@ public class TestConfig implements CommandLineRunner {
         for (String foodName : foodOptions) {
             foodOptionRepository.insert(foodName);
         }
-
-        // employee breakfast participation
-        employeeBreakfastParticipationRepository.insert(1L, 1L, 1L);
-        employeeBreakfastParticipationRepository.insert(1L, 1L, 2L);
-
-        employeeBreakfastParticipationRepository.insert(1L, 2L, 3L);
-
+//
+//        // employee breakfast participation
+//        employeeBreakfastParticipationRepository.insert(1L, 1L, 1L);
+//        employeeBreakfastParticipationRepository.insert(1L, 1L, 2L);
+//
+//        employeeBreakfastParticipationRepository.insert(1L, 2L, 3L);
+//
 
         System.out.println("Finalizado!!!");
     }
