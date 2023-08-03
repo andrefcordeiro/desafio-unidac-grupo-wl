@@ -79,8 +79,10 @@ function registerBreakfastParticipation(event) {
         foodOptionsIds.push(option.id)
     })
 
+    let employeeCpf = $("#register-employee-cpf").val()
+
     let breakfastParticipation = {
-        'employeeCpf': $("#register-employee-cpf").val(),
+        'employeeCpf': employeeCpf,
         'foodOptionsIds': foodOptionsIds
     }
 
@@ -97,10 +99,15 @@ function registerBreakfastParticipation(event) {
             $("#out-form").css('color', 'white')
         }, 
         error: function (response) {
-            let foodOptionAlreadySelectedId = response.responseJSON.message.split("id")[1].split(" ")[1]
-            let foodOptionAlreadySelectedName = foodOptions[foodOptionAlreadySelectedId - 1].foodName
+            if(response.responseText.includes("Resource not found. cpf")){
+                $("#out-form").text('Colaborador com cpf ' + employeeCpf + ' não cadastrado no sistema.')
+            }
+            else {
+                let foodOptionAlreadySelectedId = response.responseJSON.message.split("id")[1].split(" ")[1]
+                let foodOptionAlreadySelectedName = foodOptions[foodOptionAlreadySelectedId - 1].foodName
+                $("#out-form").text('Opção "' +  foodOptionAlreadySelectedName + '" já foi selecionada. Escolha outro alimento.')
+            }
             
-            $("#out-form").text('Opção "' +  foodOptionAlreadySelectedName + '" já foi selecionada. Escolha outro alimento.')
             $("#out-form").css('color', 'yellow')          
         },
     })

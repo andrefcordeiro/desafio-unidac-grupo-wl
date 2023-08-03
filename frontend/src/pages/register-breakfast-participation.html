@@ -50,19 +50,20 @@
                 <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF do colaborador" required>
             </div>
 
-            <div class="form-group d-flex flex-column mt-3">
-                <label class="text-light font-weight-bold" for="food-options">Opções de comidas</label>
-                <select id="options-selected" class="form-select" required>
-                </select>
+            <p id="out-form" class="help-block"> </p>
+            <div class="form-group d-flex flex-row">
+                <div class="form-group d-flex flex-column mt-3">
+                    <label class="text-light font-weight-bold" for="food-options">Opções de comidas</label>
+                    <select id="options-selected" class="form-select" required>
+                    </select>
+                </div>
+                <div class="d-flex align-items-center align-self-end mb-3 ml-4">
+                    <button id="add-button" type="button" class="btn btn-danger text-light font-weight-bold mr-3"
+                    onclick="removeFoodOption()" style="width: 40px; height: 40px;"> - </button>
+                    <button id="add-button" type="button" class="btn btn-success text-light font-weight-bold" 
+                        onclick="addFoodOption()" style="width: 40px; height: 40px;"> + </button>
+                </div>
             </div>
-
-            <div class="btn-group d-flex align-items-center mt-3">
-                <button id="add-button" type="button" class="btn btn-dark mr-2 text-primary font-weight-bold"
-                onclick="removeFoodOption()"> Remover última opção </button>
-                <button id="add-button" type="button" class="btn btn-light text-primary font-weight-bold" 
-                    onclick="addFoodOption()"> Adicionar opção </button>
-            </div>
-            
 
             <ul id="food-options-list" class="list-group"></ul>
 
@@ -70,7 +71,6 @@
             class="btn btn-light mt-4 text-primary font-weight-bold align-self-center">Cadastrar</button>
 
         </form>
-        <p id="out-form" class="help-block"> </p>
     </div>
 </body>
 </html>
