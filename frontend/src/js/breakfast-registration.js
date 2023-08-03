@@ -3,10 +3,8 @@ function registerBreakfast(event) {
 
     const date = $('#register-breakfast-date').val()
     let today = new Date()
-    today.setHours(0, 0, 0, 0);
     
     let givenDate = new Date(date)
-    givenDate.setHours(0, 0, 0, 0);
 
     if (givenDate <= today) {
         $("#out-form").text('A data deve ser maior do que a atual.')
@@ -19,7 +17,7 @@ function registerBreakfast(event) {
     let body = JSON.stringify(breakfast)
 
     $.ajax({
-        url: "http://localhost:8080/breakfast",
+        url: "https://desafio-unidac-backend-7fc18a667ec2.herokuapp.com/breakfast",
         contentType: "application/json",
         data: body,
         dataType: "json",
