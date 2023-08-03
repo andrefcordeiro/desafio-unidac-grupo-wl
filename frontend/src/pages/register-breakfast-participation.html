@@ -47,7 +47,8 @@
             
             <div class="form-group mt-4" style="width: 100%;">
                 <label class="text-light font-weight-bold" for="cpf">Cpf do colaborador</label>
-                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF do colaborador" required>
+                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF no formato xxx.xxx.xxx-xx" 
+                    pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
             </div>
 
             <p id="out-form" class="help-block"> </p>

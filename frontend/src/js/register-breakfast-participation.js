@@ -100,7 +100,7 @@ function registerBreakfastParticipation(event) {
         }, 
         error: function (response) {
             if(response.responseText.includes("Resource not found. cpf")){
-                $("#out-form").text('Colaborador com cpf ' + employeeCpf + ' não cadastrado no sistema.')
+                $("#out-form").text('Colaborador com cpf "' + employeeCpf + '" não cadastrado no sistema.')
             }
             else {
                 let foodOptionAlreadySelectedId = response.responseJSON.message.split("id")[1].split(" ")[1]

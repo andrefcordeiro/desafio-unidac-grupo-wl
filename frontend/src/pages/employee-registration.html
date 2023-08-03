@@ -45,7 +45,8 @@
             </div>
             <div class="form-group" style="width: 100%;">
                 <label class="text-light font-weight-bold" for="cpf">CPF</label>
-                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF" required>
+                <input type="text" class="form-control" id="register-employee-cpf" placeholder="Informe o CPF no formato xxx.xxx.xxx-xx" 
+                    pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
             </div>
             <button id="register-employee" type="submit" class="btn btn-light mt-3 text-primary font-weight-bold">Cadastrar</button>
         </form>
