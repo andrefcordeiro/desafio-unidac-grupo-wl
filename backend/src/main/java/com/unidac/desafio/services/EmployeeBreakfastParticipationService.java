@@ -8,6 +8,7 @@ import com.unidac.desafio.projections.EmployeeBreakfastParticipationProjection;
 import com.unidac.desafio.repositories.EmployeeBreakfastParticipationRepository;
 import com.unidac.desafio.repositories.EmployeeRepository;
 import com.unidac.desafio.services.exceptions.InvalidBreakfastParticipationException;
+import com.unidac.desafio.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,10 @@ public class EmployeeBreakfastParticipationService {
 
     public EmployeeBreakfastParticipationDTO insert(EmployeeBreakfastParticipationDTO employeeBreakfastParticipationDTO) {
         Employee employee = employeeRepository.findByCPF(employeeBreakfastParticipationDTO.getEmployeeCpf());
+
+        if (employee == null)
+            throw new ResourceNotFoundException("cpf", employeeBreakfastParticipationDTO.getEmployeeCpf());
+
         Long breakfastId = employeeBreakfastParticipationDTO.getBreakfastId();
 
         for (Long foodOptionId : employeeBreakfastParticipationDTO.getFoodOptionsIds()) {

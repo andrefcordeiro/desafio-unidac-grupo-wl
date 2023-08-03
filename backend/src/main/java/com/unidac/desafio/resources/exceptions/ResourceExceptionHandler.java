@@ -5,10 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.unidac.desafio.services.exceptions.InvalidBreakfastDateException;
-import com.unidac.desafio.services.exceptions.InvalidBreakfastParticipationException;
-import com.unidac.desafio.services.exceptions.ResourceAlreadyExistsException;
-import com.unidac.desafio.services.exceptions.StandardError;
+import com.unidac.desafio.services.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -67,6 +64,18 @@ public class ResourceExceptionHandler {
             InvalidBreakfastDateException e, HttpServletRequest request) {
         String error = "Invalid breakfast date";
         HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError err =
+                new StandardError(
+                        Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<StandardError> resourceNotFound(
+            ResourceNotFoundException e, HttpServletRequest request) {
+        String error = "Resource not found";
+        HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err =
                 new StandardError(
                         Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
