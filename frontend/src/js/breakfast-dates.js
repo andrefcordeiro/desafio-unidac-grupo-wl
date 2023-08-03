@@ -12,15 +12,27 @@ function onPageLoadFunction(event) {
                 let yearMonthDay = breakfast.date.split('-')
                 let formattedDate = yearMonthDay[2].concat('/', yearMonthDay[1]).concat('/', yearMonthDay[0])
 
+                // prod
                 $("#breakfasts").append(
                     `
                     <li class="list-group-item mb-4">
-                        <a class="text-primary" href="./breakfast-participations.html?${breakfast.id}">
+                        <a class="text-primary" href="src/pages/breakfast-participations.html?${breakfast.id}">
                             ${formattedDate}
                         </a>
                     </li>
                     `
                 )
+            
+                // dev
+                // $("#breakfasts").append(
+                //     `
+                //     <li class="list-group-item mb-4">
+                //         <a class="text-primary" href="/src/pages/breakfast-participations.html?${breakfast.id}">
+                //             ${formattedDate}
+                //         </a>
+                //     </li>
+                //     `
+                // )
             });
         },
     });
