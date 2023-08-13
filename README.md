@@ -2,8 +2,6 @@
 
 Aplicação para organização de datas de café da manhã de uma empresa. 
 
-Pode ser testada neste [link](https://andrefcordeiro.github.io/desafio-unidac-grupo-wl/).
-
 ## Backend
 Tecnologias utilizadas:
 - Spring boot
